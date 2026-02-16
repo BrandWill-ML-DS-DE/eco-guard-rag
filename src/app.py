@@ -7,7 +7,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.chains import RetrievalQA
 from langchain_community.llms import Groq
 
-# --- CONFIGURATION ---
+
 st.set_page_config(page_title="Eco-Guard Hybrid RAG", layout="wide")
 
 with st.sidebar:
@@ -18,7 +18,7 @@ with st.sidebar:
     routing_mode = st.toggle("Enable Smart Routing", value=True, 
                              help="Uses SLM for summaries, LLM for complex logic.")
 
-# --- CORE LOGIC ---
+
 def process_document(uploaded_file):
     with open("temp.pdf", "wb") as f:
         f.write(uploaded_file.getbuffer())
@@ -33,7 +33,7 @@ def process_document(uploaded_file):
     vector_db = Chroma.from_documents(chunks, embeddings)
     return vector_db
 
-# --- THE SENIOR-LEVEL "ROUTING" LAYER ---
+
 def get_response(query, vector_db):
     # Intent Detection (The "Senior" part)
     is_complex = any(word in query.lower() for word in ["analyze", "risk", "conflict", "legal", "why"])
@@ -51,7 +51,6 @@ def get_response(query, vector_db):
     qa_chain = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff", retriever=vector_db.as_retriever())
     return qa_chain.run(query), model_name
 
-# --- UI ---
 st.header("📄 Eco-Guard: Hybrid Compliance Analyzer")
 uploaded_file = st.file_uploader("Upload a Contract or Technical Doc", type="pdf")
 
