@@ -55,3 +55,35 @@ Following the **12-Factor App methodology**, all styling and UI preferences are 
 git clone [https://github.com/yourusername/eco-guard.git](https://github.com/yourusername/eco-guard.git)
 cd eco-guard
 pip install -r requirements.txt
+```
+### 2. Configure Secrets
+
+Create .streamlit/secrets.toml:
+```bash
+GOOGLE_API_KEY = "your_gemini_key"
+GROQ_API_KEY = "your_groq_key"
+```
+### 3. Run via Docker
+
+```bash
+docker build -t eco-guard .
+docker run -p 8501:8501 eco-guard
+```
+
+---
+
+## 📊 Results
+
+| Metric | Value |
+|--------|-------|
+| Cost Optimization | X |
+   
+---
+
+## 📈 Roadmap & Optimization
+
+* **[ ] Reranking:** Integrate Flashrank to improve precision of the top-k retrieved documents.
+* **[ ] Automated Evaluation:** Implement RAGAS scores (Faithfulness, Relevancy) for continuous quality monitoring.
+* **[ ] Async Ingestion:** Move PDF processing to a background Celery task for multi-user scaling.
+
+> **Disclaimer:** This project is for educational purposes only. It is not financial advice. The agent's performance on historical data does not guarantee future results in live markets.
