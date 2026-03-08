@@ -86,4 +86,3 @@ docker run -p 8501:8501 eco-guard
 * **[ ] Automated Evaluation:** Implement RAGAS scores (Faithfulness, Relevancy) for continuous quality monitoring.
 * **[ ] Async Ingestion:** Move PDF processing to a background Celery task for multi-user scaling.
 
-> **Disclaimer:** This project is for educational purposes only. It is not financial advice. The agent's performance on historical data does not guarantee future results in live markets.
